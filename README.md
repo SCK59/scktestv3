@@ -38,6 +38,10 @@ The repository has 'Public access' as per the instructions provided.
 
 
 **Deployment Steps**
+
+** Build status **. [![Build Status](https://travis-ci.com/SCK59/scktestv3.svg?branch=master)](https://travis-ci.com/SCK59/scktestv3)
+
+
 1. Clone the git repo
     - Login to local machine and directory where repo should be downloaded.
     - Execute the following command: 
@@ -163,8 +167,6 @@ The repository has 'Public access' as per the instructions provided.
 
     To trigger a build we need to commit and push to this repo. Travis-CI will automatically trigger a build and push the image to docker hub using the login credentials provided in env variables. 
     
-    ** Build status **
-    [![Build Status](https://travis-ci.com/SCK59/scktestv3.svg?branch=master)](https://travis-ci.com/SCK59/scktestv3)
 
     Docker image versioning is handled by CI pipeline which tags the images using the first 6 characters of the git commit sha. It can be changed to use the pipeline build number by making some changes to travis.yml file. To acheive this replace $COMMIT in the file with $TRAVIS_BUILD_NUMBER.
 
