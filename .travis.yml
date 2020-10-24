@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+    - "12"
+services:
+    - docker
+before_script:
+    - docker build -t run_tests --target tester .
+    - npm install -g snyk
+    - snyk config set api=363dd8eb-e521-4895-a89a-30ded2f3ab99
+    - snyk test
+env:
+  global:
+     - COMMIT=${TRAVIS_COMMIT::6}
+     - REPO=sck-testv3
+script:
+    - docker build -t $REPO:$COMMIT --build-arg COMMIT_SHA=$TRAVIS_COMMIT --build-arg PORT_ARG=$PORT_ARG .
+    - snyk test --docker $REPO:$COMMIT
+after_success:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+    - docker tag $REPO:$COMMIT $REPO:$COMMIT
+    - docker push $REPO:$COMMIT
+    - docker tag $REPO:$COMMIT $REPO:latest
+    - docker push $REPO:latest

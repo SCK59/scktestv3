@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: v3t2k8s 
+  namespace: technical-test
+  labels:
+    app: v3t2k8s 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: v3t2k8s
+  template:
+    metadata:
+      labels:
+        app: v3t2k8s
+    spec:
+      containers:
+      - name: v3t2k8s 
+        image: v3test1:COMMIT_SHA
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: v3t2k8s
+  namespace: technical-test
+spec:
+  selector:
+    app: v3t2k8s 
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
