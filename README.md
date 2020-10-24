@@ -38,8 +38,7 @@ The repository has 'Public access' as per the instructions provided.
 
 
 **Deployment Steps**
-
-** Build status **. [![Build Status](https://travis-ci.com/SCK59/scktestv3.svg?branch=master)](https://travis-ci.com/SCK59/scktestv3)
+[![Build Status](https://travis-ci.com/SCK59/scktestv3.svg?branch=master)](https://travis-ci.com/SCK59/scktestv3)
 
 
 1. Clone the git repo
