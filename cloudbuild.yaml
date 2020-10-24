@@ -6,7 +6,7 @@ steps:
       args:
       - 'build'
       - '-t'
-      - 'gcr.io/$PROJECT_ID/sck-testv3-build:$SHORT_SHA'
+      - 'gcr.io/$PROJECT_ID/scktestv3-build:$SHORT_SHA'
       - '.'
       - '--build-arg'
       - 'COMMIT_SHA=$SHORT_SHA'
@@ -18,7 +18,7 @@ steps:
       id: Push
       args:
       - 'push'
-      - 'gcr.io/$PROJECT_ID/sck-testv3-build:$SHORT_SHA'
+      - 'gcr.io/$PROJECT_ID/scktestv3-build:$SHORT_SHA'
 # [END cloudbuild-CI]
 
 # [START cloudbuild-cd]
@@ -29,8 +29,8 @@ steps:
       args:
       - '-c'
       - |
-        gcloud source repos clone sck-testv3-env && \
-        cd sck-testv3-env && \
+        gcloud source repos clone scktestv3-env && \
+        cd scktestv3-env && \
         git checkout candidate && \
         git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
     # generate new manifest
@@ -41,8 +41,8 @@ steps:
       - '-c'
       - |
         sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" v3test2_k8s.yaml | \
-        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > sck-testv3-env/v3test2_k8s.yaml
-    # push manifest back to sck-testv3-env
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > scktestv3-env/v3test2_k8s.yaml
+    # push manifest back to scktestv3-env
     - name: 'gcr.io/cloud-builders/gcloud'
       id: Push manifest
       entrypoint: /bin/sh
@@ -50,10 +50,10 @@ steps:
       - '-c'
       - |
         set -x && \
-        cd sck-testv3-env && \
+        cd scktestv3-env && \
         git add v3test2_k8s.yaml && \
         git commit -m "Deploying image gcr.io/${PROJECT_ID}/-build:${SHORT_SHA}
-        Built from commit ${COMMIT_SHA} of repository sck-testv3-repo
+        Built from commit ${COMMIT_SHA} of repository scktestv3-repo
         Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
         git push origin candidate
 # [END cloudbuild-cd]

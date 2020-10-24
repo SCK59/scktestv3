@@ -11,7 +11,7 @@ before_script:
 env:
   global:
      - COMMIT=${TRAVIS_COMMIT::6}
-     - REPO=sck-testv3
+     - REPO=scktestv3
 script:
     - docker build -t $REPO:$COMMIT --build-arg COMMIT_SHA=$TRAVIS_COMMIT --build-arg PORT_ARG=$PORT_ARG .
     - snyk test --docker $REPO:$COMMIT

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: v3t2k8s 
-        image: gcr.io/GOOGLE_CLOUD_PROJECT/sck-testv3-build:COMMIT_SHA
+        image: gcr.io/GOOGLE_CLOUD_PROJECT/scktestv3-build:COMMIT_SHA
         ports:
         - containerPort: 8080
 ---

@@ -5,7 +5,7 @@
 This exercise aims to create an application(NodeJS) on a Docker container (multistage) which displays the version, last commit of code and Description. 
 This application code will be deployed using TravisCI (CICD Tool). 
 Synk has also been used for quality and security assurance for the code. 
-The code has been checked in the GitHub repository - /https://github/com/SCK59/sck_testv3 for version control. 
+The code has been checked in the GitHub repository - /https://github/com/SCK59/scktestv3 for version control. 
 The repository has 'Public access' as per the instructions provided. 
 
 
@@ -41,7 +41,7 @@ The repository has 'Public access' as per the instructions provided.
 1. Clone the git repo
     - Login to local machine and directory where repo should be downloaded.
     - Execute the following command: 
-    ```git clone https://github.com/SCK59/sck_testv3```
+    ```git clone https://github.com/SCK59/scktestv3.git```
 
 2. Start the application
     This steps ensures that application is created and running as expected (without Docker)
@@ -164,7 +164,7 @@ The repository has 'Public access' as per the instructions provided.
     To trigger a build we need to commit and push to this repo. Travis-CI will automatically trigger a build and push the image to docker hub using the login credentials provided in env variables. 
     
     ** Build status
-    [![Build Status](https://travis-ci.com/SCK59/sck-testv3.svg?branch=master)](https://travis-ci.com/SCK59/sck-testv3)
+    [![Build Status](https://travis-ci.com/SCK59/scktestv3.svg?branch=master)](https://travis-ci.com/SCK59/scktestv3)
     
 
     Docker image versioning is handled by CI pipeline which tags the images using the first 6 characters of the git commit sha. It can be changed to use the pipeline build number by making some changes to travis.yml file. To acheive this replace $COMMIT in the file with $TRAVIS_BUILD_NUMBER.
@@ -172,8 +172,8 @@ The repository has 'Public access' as per the instructions provided.
 7. Subsequent use of Docker Image. 
     Execute the follwings steps to extract the image from docker hub and run app on local machine: 
       ```
-      docker pull SCK59/sck_testv3
-      docker run -p 80:8080 -d --name v3test1 SCK59/sck_testv3
+      docker pull SCK59/scktestv3
+      docker run -p 80:8080 -d --name v3test1 SCK59/scktestv3
       ```
     Test on browser using: http://localhost/version
 
