@@ -5,7 +5,7 @@
 This exercise aims to create an application(NodeJS) on a Docker container (multistage) which displays the version, last commit of code and Description. 
 This application code will be deployed using TravisCI (CICD Tool). 
 Synk has also been used for quality and security assurance for the code. 
-The code has been checked in the GitHub repository - /https://github/com/SCK59/scktestv3 for version control. 
+The code has been checked in the GitHub repository - https://github.com/SCK59/scktestv3 for version control. 
 The repository has 'Public access' as per the instructions provided. 
 
 
